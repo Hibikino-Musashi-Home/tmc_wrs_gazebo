@@ -28,11 +28,13 @@ find_package(tf2_ros REQUIRED)
 # Python helpers
 ###############################################################################
 # Install the entire Python package under src/${PROJECT_NAME}
-ament_python_install_package(${PROJECT_NAME})
+ament_python_install_package(${PROJECT_NAME}
+  PACKAGE_DIR src/${PROJECT_NAME}
+)
 
-# Stand‑alone executable scripts (ROS 2 entry‑points via ros2 run)
+# 実行スクリプトをインストール
 install(PROGRAMS
-  scripts/spawn_object.py
+  scripts/spawn_objects.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

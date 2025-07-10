@@ -21,6 +21,8 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)   # <-- For Python package install
 find_package(xacro REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 ###############################################################################
 # Python helpers

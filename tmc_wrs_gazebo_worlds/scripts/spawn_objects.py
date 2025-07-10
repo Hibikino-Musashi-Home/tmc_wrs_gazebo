@@ -1,0 +1,165 @@
+#!/usr/bin/env python3
+# Copyright (c) 2019 TOYOTA MOTOR CORPORATION
+# All rights reserved.
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+
+#  * Redistributions of source code must retain the above copyright notice,
+#  this list of conditions and the following disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright
+#  notice, this list of conditions and the following disclaimer in the
+#  documentation and/or other materials provided with the distribution.
+#  * Neither the name of Toyota Motor Corporation nor the names of its
+#  contributors may be used to endorse or promote products derived from
+#  this software without specific prior written permission.
+
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+
+import argparse
+import random
+import sys
+import math
+import numpy as np
+from typing import Callable
+
+# ROS 2
+import rclpy
+from rclpy.node import Node
+from rclpy.utilities import remove_ros_args
+
+# Gazebo service definition
+from gazebo_msgs.srv import SpawnEntity
+
+# Messages
+from geometry_msgs.msg import Pose, Quaternion
+
+# TF helpers (identical to ROS 1)
+import tf_transformations as tft
+
+# Task‑specific randomiser (unchanged)
+from tmc_wrs_gazebo_worlds import randomizer
+
+# ---------------------------------------------------------------------------
+# SDF template for spawning models that exist in the local Gazebo model DB
+# ---------------------------------------------------------------------------
+model_database_template = """<sdf version="1.6">
+  <world name="default">
+    <include>
+      <uri>model://MODEL_NAME</uri>
+    </include>
+  </world>
+</sdf>"""
+
+
+class ObjectSpawner(Node):
+    """ROS 2 Node that wraps the /spawn_entity service helper."""
+
+    def __init__(self, args: argparse.Namespace):
+        super().__init__('spawn_objects')
+        self.args = args
+
+        # Create a single persistent client to Gazebo's spawn service
+        self._spawn_cli = self.create_client(SpawnEntity, '/spawn_entity')
+        while not self._spawn_cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Waiting for /spawn_entity service…')
+
+        # Seed random generators (optional)
+        if args.seed is not None:
+            random.seed(args.seed)
+            np.random.seed(args.seed)
+
+        # Generate task
+        randomizer.generate_wrs_task(
+            self._drop_object, args.seed, args.percategory, args.obstacles, args.perrow
+        )
+
+        self.get_logger().info('Spawn finished')
+
+    # ---------------------------------------------------------------------
+    # Internal helpers
+    # ---------------------------------------------------------------------
+    def _drop_object(
+        self,
+        gazebo_name: str,
+        model_name: str,
+        x: float,
+        y: float,
+        z: float,
+        yaw: float,
+    ) -> None:
+        """Callback invoked by *randomizer* to spawn a single model."""
+        self.get_logger().info(f'Drop {model_name}')
+
+        # Pose construction
+        pose = Pose()
+        pose.position.x = float(x)
+        pose.position.y = float(y)
+        pose.position.z = float(z)
+
+        # Convert Euler → quaternion (roll & pitch are 0)
+        q = tft.quaternion_from_euler(0.0, 0.0, float(yaw))
+        pose.orientation = Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
+
+        # Fill service request
+        req = SpawnEntity.Request()
+        req.name = gazebo_name  # Unique name in Gazebo world
+        req.xml = model_database_template.replace('MODEL_NAME', model_name)
+        req.robot_namespace = self.get_namespace()
+        req.initial_pose = pose
+        req.reference_frame = 'world'
+
+        # Call service synchronously (spin‑until‑complete)
+        future = self._spawn_cli.call_async(req)
+        rclpy.spin_until_future_complete(self, future)
+
+        if future.result() is not None:
+            self.get_logger().info(f"Spawn response: {future.result().status_message}")
+        else:
+            self.get_logger().error(f'Spawn failed: {future.exception()}')
+
+
+# ---------------------------------------------------------------------------
+# Main entry point
+# ---------------------------------------------------------------------------
+
+def parse_arguments() -> argparse.Namespace:
+    """Parse CLI arguments, stripping ROS 2‑specific launch remappings."""
+    parser = argparse.ArgumentParser(description='Drop objects to the WRS field.')
+    parser.add_argument('--seed', nargs='?', type=int, default=None,
+                        help='Seed for RNGs (default: none)')
+    parser.add_argument('--percategory', nargs='?', type=int, default=6,
+                        help='Objects per category in task 1 (default: 6)')
+    parser.add_argument('--obstacles', nargs='?', type=int, default=4,
+                        help='Number of obstacles in task 2a (default: 4)')
+    parser.add_argument('--perrow', nargs='?', type=int, default=6,
+                        help='Objects per row in task 2 (default: 6)')
+
+    # Remove ROS 2‑specific arguments added by launch / ros2 run
+    clean_argv = remove_ros_args(sys.argv)
+    return parser.parse_args(clean_argv[1:])
+
+
+def main() -> None:
+    args = parse_arguments()
+    rclpy.init()
+
+    # Create node (spawns everything in its constructor)
+    ObjectSpawner(args)
+
+    # Clean shutdown
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()

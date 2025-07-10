@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>tmc_wrs_gazebo_worlds</name>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <description>World and model files for WRS Gazebo simulator</description>
 
   <maintainer email="xr-hsr-support@mail.toyota.co.jp">HSR Support</maintainer>
@@ -13,19 +13,17 @@
   <author>Yosuke Matsusaka</author>
   <author>Nobuyuki Matsuno</author>
 
-  <buildtool_depend condition="$ROS_VERSION == 1">catkin</buildtool_depend>
-  <buildtool_depend condition="$ROS_VERSION == 2">ament_cmake</buildtool_depend>
-  <buildtool_depend condition="$ROS_VERSION == 2">ament_cmake_python</buildtool_depend>
+  <build_depend>ament_cmake</build_depend>
+  <build_depend>ament_cmake_python</build_depend>
   <build_depend>xacro</build_depend>
-  <exec_depend condition="$ROS_VERSION == 1">rospy</exec_depend>
-  <exec_depend condition="$ROS_VERSION == 2">rclpy</exec_depend>
+
+  <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>tf</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
 
   <export>
-    <build_type condition="$ROS_VERSION == 2">ament_cmake</build_type>
-    <build_type condition="$ROS_VERSION == 1">catkin</build_type>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>

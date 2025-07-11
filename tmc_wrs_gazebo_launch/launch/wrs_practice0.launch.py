@@ -88,7 +88,7 @@ def generate_launch_description():
     # Static launch_arguments are defined here.
     launch_arg_info = {
         "map": os.path.join(
-            get_package_share_directory("tmc_potential_maps"),
+            get_package_share_directory("tmc_wrs_gazebo_worlds"),
             "maps/wrs2020/map.yaml",
         ),
         "robot_pos": "-2.1, 1.2, 0.0, -1.57",

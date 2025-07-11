@@ -114,6 +114,10 @@ install(
   DESTINATION share/${PROJECT_NAME})
 
 install(
+  DIRECTORY maps
+  DESTINATION share/${PROJECT_NAME})
+
+install(
   DIRECTORY worlds
   DESTINATION share/${PROJECT_NAME}
   FILES_MATCHING PATTERN "*.world"

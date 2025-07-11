@@ -124,14 +124,13 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration("fast_physics")),
     )
 
-    # TODO ROS 2 support for spawn_objects
-    # spawn_objects = Node(
-    #     package="tmc_wrs_gazebo_worlds",
-    #     executable="spawn_objects",
-    #     name="spawn_objects",
-    #     arguments=["--seed", LaunchConfiguration("seed")],
-    #     output="screen",
-    # )
+    spawn_objects = Node(
+        package="tmc_wrs_gazebo_worlds",
+        executable="spawn_objects",
+        name="spawn_objects",
+        arguments=["--seed", LaunchConfiguration("seed")],
+        output="screen",
+    )
 
     # Default comment out --------------------------------------------------------
 
@@ -254,6 +253,6 @@ def generate_launch_description():
         + [
             hsrb_gazebo_common,
             hsrb_gazebo_common_fast,
-            # spawn_objects,
+            spawn_objects,
         ]
     )

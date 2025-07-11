@@ -15,7 +15,7 @@ setup(
     license="BSD 3-clause Clear License",
     entry_points={
         "console_scripts": [
-            "spawn_object = tmc_wrs_gazebo_worlds.spawn_objects:main",
+            "spawn_objects = tmc_wrs_gazebo_worlds.spawn_objects:main",
         ],
     },
 )

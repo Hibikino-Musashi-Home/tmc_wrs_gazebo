@@ -22,10 +22,11 @@
           </mesh>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Orange</name>
-          </script>
+          <name>orange</name>
+          <ambient>1.0 0.423529 0.0392157 1.0</ambient>
+          <diffuse>1.0 0.423529 0.0392157 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <visual name='knob_base'>
@@ -38,8 +39,10 @@
         </geometry>
         <material>
           <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
+            <ambient>1.0 1.0 1.0 1.0</ambient>
+            <diffuse>1.0 1.0 1.0 1.0</diffuse>
+            <specular>0.1 0.1 0.1 1.0</specular>
+            <shininess>1.0</shininess>
           </script>
         </material>
       </visual>
@@ -52,10 +55,11 @@
             </cylinder>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <visual name='knob_handle'>
@@ -66,10 +70,11 @@
             </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name='collision_trofast'>

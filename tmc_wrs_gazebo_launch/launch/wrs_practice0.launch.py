@@ -7,9 +7,9 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 
-from launch import LaunchDescription
+from launch import LaunchContext, LaunchDescription
 
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, GroupAction
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, GroupAction, OpaqueFunction
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch.conditions import IfCondition, UnlessCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -69,6 +69,10 @@ def declare_arguments():
 
 
 def generate_launch_description():
+    args = {}
+    for arg in declare_arguments():
+        args[arg.name] = LaunchConfiguration(arg.name)
+
     hsrb_gazebo_common_path = os.path.join(
         get_package_share_directory("hsrb_gazebo_launch"),
         "launch/include/hsrb_gazebo_common.launch.py",
@@ -91,9 +95,10 @@ def generate_launch_description():
             get_package_share_directory("tmc_wrs_gazebo_worlds"),
             "maps/wrs2020/map.yaml",
         ),
-        "robot_pos": "-2.1, 1.2, 0.0, -1.57",
-        "ground_truth_xyz": "2.1\\ -1.2\\ 0.0",
-        "ground_truth_rpy": "0.0\\ 0.0\\ 1.57",
+        "robot_pos_x": "-2.1",
+        "robot_pos_y": "1.2",
+        "robot_pos_z": "0.0",
+        "robot_rpy_Y": "-1.57",
     }
 
     hsrb_gazebo_common = IncludeLaunchDescription(
@@ -122,6 +127,23 @@ def generate_launch_description():
             },
         }.items(),
         condition=IfCondition(LaunchConfiguration("fast_physics")),
+    )
+
+    bridge_spawn_entity_node = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        name="bridge_spawn_entity",
+        output="screen",
+        arguments=[
+            "/world/default/create@ros_gz_interfaces/srv/SpawnEntity",
+            "/world/default/remove@ros_gz_interfaces/srv/DeleteEntity",
+            "/world/default/set_pose@ros_gz_interfaces/srv/SetEntityPose",
+        ],
+        remappings=[
+            ("/world/default/create", "/spawn_entity"),
+            ("/world/default/remove", "/delete_entity"),
+            ("/world/default/set_pose", "/set_entity_pose"),
+        ],
     )
 
     spawn_objects = Node(
@@ -253,6 +275,7 @@ def generate_launch_description():
         + [
             hsrb_gazebo_common,
             hsrb_gazebo_common_fast,
+            bridge_spawn_entity_node,
             spawn_objects,
         ]
     )

@@ -22,10 +22,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Yellow</name>
-          </script>
+          <name>yellow</name>
+          <ambient>1.0 1.0 0.0 1.0</ambient>
+          <diffuse>1.0 1.0 0.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="front">
@@ -44,10 +45,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Yellow</name>
-          </script>
+          <name>yellow</name>
+          <ambient>1.0 1.0 0.0 1.0</ambient>
+          <diffuse>1.0 1.0 0.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="back">
@@ -66,10 +68,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Yellow</name>
-          </script>
+          <name>yellow</name>
+          <ambient>1.0 1.0 0.0 1.0</ambient>
+          <diffuse>1.0 1.0 0.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="left">
@@ -88,10 +91,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Yellow</name>
-          </script>
+          <name>yellow</name>
+          <ambient>1.0 1.0 0.0 1.0</ambient>
+          <diffuse>1.0 1.0 0.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="right">
@@ -110,10 +114,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Yellow</name>
-          </script>
+          <name>yellow</name>
+          <ambient>1.0 1.0 0.0 1.0</ambient>
+          <diffuse>1.0 1.0 0.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
     </link>

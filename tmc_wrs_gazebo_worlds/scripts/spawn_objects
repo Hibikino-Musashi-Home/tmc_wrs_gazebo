@@ -39,7 +39,7 @@ from rclpy.node import Node
 from rclpy.utilities import remove_ros_args
 
 # Gazebo service definition
-from gazebo_msgs.srv import SpawnEntity
+from ros_gz_interfaces.srv import SpawnEntity
 
 # Messages
 from geometry_msgs.msg import Pose, Quaternion
@@ -53,12 +53,13 @@ from tmc_wrs_gazebo_worlds import randomizer
 # ---------------------------------------------------------------------------
 # SDF template for spawning models that exist in the local Gazebo model DB
 # ---------------------------------------------------------------------------
-model_database_template = """<sdf version="1.6">
-  <world name="default">
+model_database_template = """<sdf version="1.7">
+  <model name="MODEL_NAME">
     <include>
       <uri>model://MODEL_NAME</uri>
+      <name>MODEL_NAME</name>
     </include>
-  </world>
+  </model>
 </sdf>"""
 
 
@@ -66,13 +67,15 @@ class ObjectSpawner(Node):
     """ROS 2 Node that wraps the /spawn_entity service helper."""
 
     def __init__(self, args: argparse.Namespace):
-        super().__init__('spawn_objects')
+        super().__init__("spawn_objects")
+        self.set_parameters([rclpy.parameter.Parameter("use_sim_time", rclpy.Parameter.Type.BOOL, True)])
         self.args = args
 
         # Create a single persistent client to Gazebo's spawn service
-        self._spawn_cli = self.create_client(SpawnEntity, '/spawn_entity')
+        # self._spawn_cli = self.create_client(SpawnEntity, "/spawn_entity")
+        self._spawn_cli = self.create_client(SpawnEntity, "/spawn_entity")
         while not self._spawn_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('Waiting for /spawn_entity service…')
+            self.get_logger().info("Waiting for /spawn_entity service…")
 
         # Seed random generators (optional)
         if args.seed is not None:
@@ -80,11 +83,9 @@ class ObjectSpawner(Node):
             np.random.seed(args.seed)
 
         # Generate task
-        randomizer.generate_wrs_task(
-            self._drop_object, args.seed, args.percategory, args.obstacles, args.perrow
-        )
+        randomizer.generate_wrs_task(self._drop_object, args.seed, args.percategory, args.obstacles, args.perrow)
 
-        self.get_logger().info('Spawn finished')
+        self.get_logger().info("Spawn finished")
 
     # ---------------------------------------------------------------------
     # Internal helpers
@@ -99,7 +100,7 @@ class ObjectSpawner(Node):
         yaw: float,
     ) -> None:
         """Callback invoked by *randomizer* to spawn a single model."""
-        self.get_logger().info(f'Drop {model_name}')
+        self.get_logger().info(f"Drop {model_name}")
 
         # Pose construction
         pose = Pose()
@@ -113,37 +114,45 @@ class ObjectSpawner(Node):
 
         # Fill service request
         req = SpawnEntity.Request()
-        req.name = gazebo_name  # Unique name in Gazebo world
-        req.xml = model_database_template.replace('MODEL_NAME', model_name)
-        req.robot_namespace = self.get_namespace()
-        req.initial_pose = pose
-        req.reference_frame = 'world'
+        req.entity_factory.name = gazebo_name
+        req.entity_factory.sdf = model_database_template.replace("MODEL_NAME", model_name)
+        req.entity_factory.allow_renaming = True
+        req.entity_factory.pose = pose
+        req.entity_factory.relative_to = "world"
 
         # Call service synchronously (spin‑until‑complete)
         future = self._spawn_cli.call_async(req)
         rclpy.spin_until_future_complete(self, future)
 
+        # if future.result() is not None:
+        #     self.get_logger().info(f"Spawn response: {future.result().status_message}")
+        # else:
+        #     self.get_logger().error(f"Spawn failed: {future.exception()}")
         if future.result() is not None:
-            self.get_logger().info(f"Spawn response: {future.result().status_message}")
+            if future.result().success:
+                self.get_logger().info("Spawn succeeded")
+            else:
+                self.get_logger().warn("Spawn failed (Gazebo returned false)")
         else:
-            self.get_logger().error(f'Spawn failed: {future.exception()}')
+            self.get_logger().error(f"Spawn failed: {future.exception()}")
 
 
 # ---------------------------------------------------------------------------
 # Main entry point
 # ---------------------------------------------------------------------------
 
+
 def parse_arguments() -> argparse.Namespace:
     """Parse CLI arguments, stripping ROS 2‑specific launch remappings."""
-    parser = argparse.ArgumentParser(description='Drop objects to the WRS field.')
-    parser.add_argument('--seed', nargs='?', type=int, default=None,
-                        help='Seed for RNGs (default: none)')
-    parser.add_argument('--percategory', nargs='?', type=int, default=6,
-                        help='Objects per category in task 1 (default: 6)')
-    parser.add_argument('--obstacles', nargs='?', type=int, default=4,
-                        help='Number of obstacles in task 2a (default: 4)')
-    parser.add_argument('--perrow', nargs='?', type=int, default=6,
-                        help='Objects per row in task 2 (default: 6)')
+    parser = argparse.ArgumentParser(description="Drop objects to the WRS field.")
+    parser.add_argument("--seed", nargs="?", type=int, default=None, help="Seed for RNGs (default: none)")
+    parser.add_argument(
+        "--percategory", nargs="?", type=int, default=6, help="Objects per category in task 1 (default: 6)"
+    )
+    parser.add_argument(
+        "--obstacles", nargs="?", type=int, default=4, help="Number of obstacles in task 2a (default: 4)"
+    )
+    parser.add_argument("--perrow", nargs="?", type=int, default=6, help="Objects per row in task 2 (default: 6)")
 
     # Remove ROS 2‑specific arguments added by launch / ros2 run
     clean_argv = remove_ros_args(sys.argv)
@@ -161,5 +170,5 @@ def main() -> None:
     rclpy.shutdown()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

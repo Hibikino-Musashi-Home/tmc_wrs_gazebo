@@ -22,10 +22,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit1_1_left_low">
@@ -44,10 +45,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit1_1_left_high">
@@ -66,10 +68,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit1_1_right_low">
@@ -88,10 +91,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit1_1_right_high">
@@ -110,10 +114,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="slit2">
@@ -132,10 +137,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_1_left_low">
@@ -154,10 +160,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_1_left_high">
@@ -176,10 +183,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_1_right_low">
@@ -198,10 +206,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_1_right_high">
@@ -220,10 +229,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_2_left_low">
@@ -242,10 +252,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_2_left_high">
@@ -264,10 +275,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_2_right_low">
@@ -286,10 +298,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="holder_slit2_2_right_high">
@@ -308,10 +321,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="slit3">
@@ -330,10 +344,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="slit4">
@@ -352,10 +367,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="top1">
@@ -374,10 +390,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="top1_front">
@@ -396,10 +413,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="top2">
@@ -418,10 +436,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="top2_front">
@@ -440,10 +459,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="top3">
@@ -462,10 +482,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="top3_front">
@@ -484,10 +505,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
       <collision name="bottom">
@@ -506,10 +528,11 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/White</name>
-          </script>
+          <name>white</name>
+          <ambient>1.0 1.0 1.0 1.0</ambient>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <shininess>5.0</shininess>
         </material>
       </visual>
     </link>

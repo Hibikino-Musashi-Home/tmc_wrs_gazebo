@@ -23,7 +23,6 @@ def declare_arguments():
     declared_arguments: list = declare_launch_arguments()
 
     declared_arguments.append(DeclareLaunchArgument("highrtf", default_value="false"))
-    declared_arguments.append(DeclareLaunchArgument("seed", default_value="1"))
     declared_arguments.append(
         DeclareLaunchArgument(
             "world_suffix",
@@ -144,14 +143,6 @@ def generate_launch_description():
             ("/world/default/remove", "/delete_entity"),
             ("/world/default/set_pose", "/set_entity_pose"),
         ],
-    )
-
-    spawn_objects = Node(
-        package="tmc_wrs_gazebo_worlds",
-        executable="spawn_objects",
-        name="spawn_objects",
-        arguments=["--seed", LaunchConfiguration("seed")],
-        output="screen",
     )
 
     # Default comment out --------------------------------------------------------
@@ -276,6 +267,5 @@ def generate_launch_description():
             hsrb_gazebo_common,
             hsrb_gazebo_common_fast,
             bridge_spawn_entity_node,
-            spawn_objects,
         ]
     )

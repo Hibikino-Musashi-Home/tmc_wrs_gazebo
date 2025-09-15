@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_028_skillet_lid/meshes/textured.dae</uri>
+            <uri>model://ycb_028_skillet_lid/meshes/ycb_028_skillet_lid.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_028_skillet_lid/meshes/nontextured.stl</uri>
+            <uri>model://ycb_028_skillet_lid/meshes/ycb_028_skillet_lid.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

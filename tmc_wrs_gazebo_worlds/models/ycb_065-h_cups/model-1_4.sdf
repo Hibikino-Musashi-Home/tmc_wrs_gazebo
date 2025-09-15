@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_065-h_cups/meshes/textured.dae</uri>
+            <uri>model://ycb_065-h_cups/meshes/ycb_065-h_cups.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_065-h_cups/meshes/nontextured.stl</uri>
+            <uri>model://ycb_065-h_cups/meshes/ycb_065-h_cups.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

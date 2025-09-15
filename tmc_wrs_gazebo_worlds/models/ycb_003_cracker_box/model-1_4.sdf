@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_003_cracker_box/meshes/textured.dae</uri>
+            <uri>model://ycb_003_cracker_box/meshes/ycb_003_cracker_box.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_003_cracker_box/meshes/nontextured.stl</uri>
+            <uri>model://ycb_003_cracker_box/meshes/ycb_003_cracker_box.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

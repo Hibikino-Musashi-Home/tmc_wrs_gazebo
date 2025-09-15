@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_058_golf_ball/meshes/textured.dae</uri>
+            <uri>model://ycb_058_golf_ball/meshes/ycb_058_golf_ball.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_058_golf_ball/meshes/nontextured.stl</uri>
+            <uri>model://ycb_058_golf_ball/meshes/ycb_058_golf_ball.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

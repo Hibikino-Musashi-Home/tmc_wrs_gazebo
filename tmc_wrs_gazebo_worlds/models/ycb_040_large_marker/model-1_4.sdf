@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_040_large_marker/meshes/textured.dae</uri>
+            <uri>model://ycb_040_large_marker/meshes/ycb_040_large_marker.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_040_large_marker/meshes/nontextured.stl</uri>
+            <uri>model://ycb_040_large_marker/meshes/ycb_040_large_marker.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

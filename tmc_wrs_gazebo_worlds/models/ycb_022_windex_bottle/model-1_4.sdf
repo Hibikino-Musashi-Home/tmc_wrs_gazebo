@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_022_windex_bottle/meshes/textured.dae</uri>
+            <uri>model://ycb_022_windex_bottle/meshes/ycb_022_windex_bottle.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_022_windex_bottle/meshes/nontextured.stl</uri>
+            <uri>model://ycb_022_windex_bottle/meshes/ycb_022_windex_bottle.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

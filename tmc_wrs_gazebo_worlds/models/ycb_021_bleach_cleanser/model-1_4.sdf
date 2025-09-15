@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_021_bleach_cleanser/meshes/textured.dae</uri>
+            <uri>model://ycb_021_bleach_cleanser/meshes/ycb_021_bleach_cleanser.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_021_bleach_cleanser/meshes/nontextured.stl</uri>
+            <uri>model://ycb_021_bleach_cleanser/meshes/ycb_021_bleach_cleanser.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

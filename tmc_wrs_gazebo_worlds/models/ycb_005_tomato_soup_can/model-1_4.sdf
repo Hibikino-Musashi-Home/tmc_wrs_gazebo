@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_005_tomato_soup_can/meshes/textured.dae</uri>
+            <uri>model://ycb_005_tomato_soup_can/meshes/ycb_005_tomato_soup_can.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_005_tomato_soup_can/meshes/nontextured.stl</uri>
+            <uri>model://ycb_005_tomato_soup_can/meshes/ycb_005_tomato_soup_can.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

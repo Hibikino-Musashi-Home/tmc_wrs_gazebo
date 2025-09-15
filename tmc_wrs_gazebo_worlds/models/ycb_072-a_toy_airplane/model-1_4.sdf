@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_072-a_toy_airplane/meshes/textured.dae</uri>
+            <uri>model://ycb_072-a_toy_airplane/meshes/ycb_072-a_toy_airplane.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_072-a_toy_airplane/meshes/nontextured.stl</uri>
+            <uri>model://ycb_072-a_toy_airplane/meshes/ycb_072-a_toy_airplane.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>

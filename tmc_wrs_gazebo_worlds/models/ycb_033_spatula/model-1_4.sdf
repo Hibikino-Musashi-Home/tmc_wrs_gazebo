@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_033_spatula/meshes/textured.dae</uri>
+            <uri>model://ycb_033_spatula/meshes/ycb_033_spatula.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -26,7 +26,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://ycb_033_spatula/meshes/nontextured.stl</uri>
+            <uri>model://ycb_033_spatula/meshes/ycb_033_spatula.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>10</max_contacts>
